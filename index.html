@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$DONALDO | THE DEGEN JACKPOT</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Chewy&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              meme: ['Bangers', 'cursive'],
+              comic: ['Chewy', 'cursive'],
+            },
+            colors: {
+              'meme-yellow': '#FACC15',
+              'meme-orange': '#F97316',
+              'meme-red': '#FF3333',
+              'meme-purple': '#A855F7',
+              'telegram': '#229ED9',
+            },
+            boxShadow: {
+              'hard': '8px 8px 0px 0px #000000',
+              'hard-sm': '4px 4px 0px 0px #000000',
+              'hard-white-sm': '4px 4px 0px 0px #FFFFFF',
+            },
+            animation: {
+              'marquee': 'marquee 15s linear infinite',
+              'wiggle': 'wiggle 0.5s ease-in-out infinite',
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              wiggle: {
+                '0%, 100%': { transform: 'rotate(-3deg)' },
+                '50%': { transform: 'rotate(3deg)' },
+              },
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #FACC15 0%, #F97316 100%);
+            overflow-x: hidden;
+            color: #000;
+        }
+        
+        /* Floating Emojis */
+        .emoji-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .emoji {
+            position: absolute; bottom: -50px; font-size: 2rem;
+            animation: floatUp linear infinite; opacity: 0.6;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #FACC15; }
+        ::-webkit-scrollbar-thumb { background: #000; border: 2px solid #FACC15; }
+        ::-webkit-scrollbar-thumb:hover { background: #333; }
+
+        .pattern-dots {
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 20px 20px; opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="font-comic relative min-h-screen">
+
+    <audio id="pop-sound" preload="auto" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    <audio id="cash-sound" preload="auto" src="https://assets.mixkit.co/active_storage/sfx/2004/2004-preview.mp3"></audio>
+
+    <div class="emoji-bg" id="emoji-container"></div>
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-70"></canvas>
+    <div class="fixed inset-0 pattern-dots pointer-events-none z-0"></div>
+
+    <div class="bg-black text-white py-2 overflow-hidden whitespace-nowrap border-b-4 border-black z-50 relative">
+        <div class="inline-block animate-marquee font-meme text-2xl tracking-widest">
+            $DONALDO TO THE MOON 🚀 TRUMP + RONALDO ⚽ 1000X GEM 💎 BUY NOW 💰 LFG!!! 🔥 $DONALDO TO THE MOON 🚀 TRUMP + RONALDO ⚽ 1000X GEM 💎 BUY NOW 💰 LFG!!! 🔥
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-40 px-4 py-4">
+        <div class="max-w-7xl mx-auto bg-meme-yellow border-4 border-black shadow-hard rounded-xl px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div class="flex items-center gap-3 sfx-hover">
+                <div class="transform hover:scale-105 transition-transform">
+                    <img src="images/logo.ico" alt="Donaldo" class="h-16 md:h-20 border-2 border-black rounded bg-white">
+                </div>
+                <div class="hidden md:flex flex-col leading-none">
+                    <span class="font-meme text-2xl text-black">OFFICIAL</span>
+                    <span class="font-comic text-sm bg-black text-white px-2 py-0.5 rounded transform -rotate-2">SOLANA MEME</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 md:gap-6">
+                <a href="#how-to-buy" class="sfx-hover font-meme text-lg md:text-xl px-4 py-1 bg-white border-2 border-black rounded-lg shadow-hard-sm hover:shadow-hard hover:-translate-y-1 hover:bg-meme-purple hover:text-white hover:rotate-2 transition-all">HOW TO BUY 🛒</a>
+                <a href="#golden-ticket" class="sfx-hover font-meme text-lg md:text-xl px-4 py-1 bg-white border-2 border-black rounded-lg shadow-hard-sm hover:shadow-hard hover:-translate-y-1 hover:bg-meme-red hover:text-white hover:-rotate-2 transition-all">CA 🎫</a>
+                <a href="#roadmap" class="sfx-hover font-meme text-lg md:text-xl px-4 py-1 bg-white border-2 border-black rounded-lg shadow-hard-sm hover:shadow-hard hover:-translate-y-1 hover:bg-meme-yellow hover:rotate-1 transition-all">ROADMAP 🗺️</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://x.com/RealDonaldoSol" target="_blank" class="sfx-hover w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:scale-110 transition-all shadow-hard-sm border-2 border-black"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+                <a href="https://t.me/RealDonaldoSol" target="_blank" class="sfx-hover md:hidden w-10 h-10 bg-[#229ED9] text-white rounded-lg flex items-center justify-center text-xl border-2 border-black shadow-hard-sm"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://pump.fun/26rfwLZUnGLQ8wYtUbdS6rn6uUF5N5y4tp82ANG2pump" target="_blank" class="sfx-hover sfx-click bg-gradient-to-r from-meme-red to-red-700 text-white font-meme text-xl px-6 py-2 rounded-lg border-4 border-black shadow-hard-sm hover:shadow-hard hover:scale-105 transition-all duration-300">BUY NOW!</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 container mx-auto px-4 py-12 flex flex-col items-center text-center">
+        
+        <div class="mb-12 relative">
+            <h1 class="font-meme text-7xl md:text-9xl text-white drop-shadow-[6px_6px_0px_#000] transform -rotate-2 animate-wiggle">
+                THE DEGEN <br>
+                <span class="text-meme-yellow text-stroke-black" style="-webkit-text-stroke: 2px black;">JACKPOT! 🎰</span>
+            </h1>
+            <p class="font-comic text-2xl md:text-4xl mt-4 bg-white inline-block px-6 py-2 border-4 border-black shadow-hard rotate-2">
+                Trump x Ronaldo. The only winning bet.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mb-16">
+            <div class="sfx-hover group bg-meme-purple p-4 rounded-2xl border-4 border-black shadow-hard transform -rotate-1 hover:rotate-0 transition-all hover:z-20">
+                <div class="bg-white border-2 border-black rounded-xl overflow-hidden relative aspect-square">
+                    <img src="images/donald.png" alt="Trump" class="w-full h-full object-cover group-hover:animate-shake">
+                    <div class="absolute bottom-0 w-full bg-black text-white font-meme text-2xl py-1">MAX POWER ⚡</div>
+                </div>
+            </div>
+            <div class="sfx-hover group bg-meme-red p-4 rounded-2xl border-4 border-black shadow-hard transform rotate-1 hover:rotate-0 transition-all hover:z-20">
+                <div class="bg-white border-2 border-black rounded-xl overflow-hidden relative aspect-square">
+                    <img src="images/RONALDO.png" alt="Ronaldo" class="w-full h-full object-cover group-hover:animate-shake">
+                    <div class="absolute bottom-0 w-full bg-black text-white font-meme text-2xl py-1">MAX FAME ⚽</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="golden-ticket" class="sfx-hover w-full max-w-3xl bg-meme-yellow p-6 md:p-8 rounded-xl border-4 border-black border-dashed shadow-hard mb-16 transform hover:scale-105 transition-transform cursor-pointer" onclick="copyToClipboard()">
+            <h3 class="font-meme text-3xl md:text-4xl mb-2 uppercase">🎫 Your Golden Ticket (CA)</h3>
+            <div class="bg-white border-4 border-black p-4 rounded-lg flex flex-col md:flex-row items-center justify-between gap-4">
+                <code id="ca-text" class="font-mono font-bold text-xs md:text-xl break-all md:break-normal">26rfwLZUnGLQ8wYtUbdS6rn6uUF5N5y4tp82ANG2pump</code>
+                <button id="copy-btn" class="bg-gradient-to-r from-gray-900 to-black text-white font-meme px-6 py-2 rounded border-2 border-black hover:from-gray-700 hover:to-gray-600 hover:-translate-y-1 transition-all duration-300 shadow-[2px_2px_0px_0px_#000] hover:shadow-[4px_4px_0px_0px_#000]">COPY</button>
+            </div>
+            <p id="copy-msg" class="mt-2 font-bold text-green-600 hidden">COPIED TO CLIPBOARD! 🚀</p>
+        </div>
+
+        <div class="flex flex-col gap-6 items-center w-full max-w-2xl mt-4 mb-24">
+            <a href="https://pump.fun/26rfwLZUnGLQ8wYtUbdS6rn6uUF5N5y4tp82ANG2pump" target="_blank" 
+               class="sfx-hover sfx-click w-full block text-center bg-gradient-to-r from-green-500 to-emerald-600 text-white font-meme text-4xl md:text-5xl py-6 rounded-2xl border-4 border-black shadow-hard hover:shadow-hard-lg hover:from-yellow-400 hover:to-orange-500 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                <span class="relative z-10 drop-shadow-md group-hover:scale-105 inline-block transition-transform">APE IN ON PUMP.FUN 💊</span>
+                <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+            </a>
+            <div class="flex flex-col md:flex-row gap-6 w-full">
+                <a href="https://x.com/RealDonaldoSol" target="_blank" class="sfx-hover flex-1 flex items-center justify-center gap-3 bg-black text-white font-meme text-3xl py-5 rounded-xl border-[3px] border-black shadow-[4px_4px_0px_0px_#FFFFFF] hover:shadow-[8px_8px_0px_0px_#FFFFFF] hover:scale-110 hover:-translate-y-1 transition-all duration-200 text-center"><svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg><span>RAID ON X ⚔️</span></a>
+                <a href="https://t.me/RealDonaldoSol" target="_blank" class="sfx-hover flex-1 flex items-center justify-center gap-3 bg-[#229ED9] text-white font-meme text-3xl py-5 rounded-xl border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] hover:shadow-[8px_8px_0px_0px_#000000] hover:animate-wiggle hover:-translate-y-1 transition-all duration-200 text-center"><i class="fa-brands fa-telegram text-4xl"></i><span>JOIN TELEGRAM ✈️</span></a>
+            </div>
+        </div>
+
+        <section id="how-to-buy" class="w-full max-w-6xl mb-24">
+            <h2 class="font-meme text-5xl text-white text-center mb-12 drop-shadow-[4px_4px_0px_#000] transform rotate-1">🛒 HOW TO APE IN</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform -rotate-2 hover:rotate-0 transition-all relative">
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-meme-yellow border-4 border-black rounded-full flex items-center justify-center font-meme text-2xl">1</div>
+                    <div class="text-6xl mb-4 text-center">👻</div>
+                    <h3 class="font-meme text-3xl mb-2 text-center">GET PHANTOM</h3>
+                    <p class="font-comic text-lg text-center">Download the Phantom wallet app and load it with some Solana ($SOL).</p>
+                </div>
+                <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform rotate-1 hover:rotate-0 transition-all relative mt-8 md:mt-0">
+                     <div class="absolute -top-6 -left-6 w-12 h-12 bg-meme-yellow border-4 border-black rounded-full flex items-center justify-center font-meme text-2xl">2</div>
+                    <div class="text-6xl mb-4 text-center">💊</div>
+                    <h3 class="font-meme text-3xl mb-2 text-center">GO TO PUMP.FUN</h3>
+                    <p class="font-comic text-lg text-center">Click our "BUY NOW" button to open the official $DONALDO page.</p>
+                </div>
+                <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform -rotate-1 hover:rotate-0 transition-all relative mt-8 md:mt-0">
+                     <div class="absolute -top-6 -left-6 w-12 h-12 bg-meme-yellow border-4 border-black rounded-full flex items-center justify-center font-meme text-2xl">3</div>
+                    <div class="text-6xl mb-4 text-center">🚀</div>
+                    <h3 class="font-meme text-3xl mb-2 text-center">SWAP & HODL</h3>
+                    <p class="font-comic text-lg text-center">Connect wallet, enter amount, and click swap. Welcome to the jackpot!</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-24">
+            <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform rotate-2 hover:rotate-0 transition-all"><div class="text-6xl mb-4">🚀</div><h3 class="font-meme text-3xl mb-2">MOON MISSION</h3><p class="font-comic text-lg">Strap in loser, we're going to Mars. This is the fastest rocket on Solana.</p></div>
+            <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform -rotate-2 hover:rotate-0 transition-all"><div class="text-6xl mb-4">💎</div><h3 class="font-meme text-3xl mb-2">DIAMOND HANDS</h3><p class="font-comic text-lg">Only winners hold $DONALDO. Jeets get rekt. HODL for the jackpot.</p></div>
+            <div class="sfx-hover bg-white p-6 border-4 border-black shadow-hard rounded-xl transform rotate-1 hover:rotate-0 transition-all"><div class="text-6xl mb-4">💰</div><h3 class="font-meme text-3xl mb-2">100% COMMUNITY</h3><p class="font-comic text-lg">No VC dumps. No roadmap... Wait, check below.</p></div>
+        </div>
+
+        <section id="roadmap" class="w-full max-w-4xl mb-12">
+            <h2 class="font-meme text-5xl text-white text-center mb-12 drop-shadow-[4px_4px_0px_#000] transform -rotate-1">🗺️ THE "TRUST ME BRO" ROADMAP</h2>
+            <div class="flex flex-col gap-4">
+                <div class="sfx-hover bg-meme-yellow p-4 border-4 border-black shadow-hard rounded-xl flex items-center gap-4 transform rotate-1">
+                    <div class="font-meme text-4xl bg-black text-white p-2 rounded-lg rotate-3">PHASE 1</div>
+                    <div><h3 class="font-meme text-2xl">THE PUMP LAUNCH</h3><p class="font-comic">Launch on Pump.fun. Raid Twitter. Make memes. Ignore FUD.</p></div>
+                </div>
+                 <div class="sfx-hover bg-meme-orange p-4 border-4 border-black shadow-hard rounded-xl flex items-center gap-4 transform -rotate-1 ml-4 md:ml-12">
+                    <div class="font-meme text-4xl bg-black text-white p-2 rounded-lg -rotate-2">PHASE 2</div>
+                    <div><h3 class="font-meme text-2xl">VIBE & HODL</h3><p class="font-comic">Hit Raydium. Trending #1. Ronaldo tweets "SIUUU". Trump mentions crypto.</p></div>
+                </div>
+                 <div class="sfx-hover bg-meme-red p-4 border-4 border-black shadow-hard rounded-xl flex items-center gap-4 transform rotate-1 ml-8 md:ml-24">
+                    <div class="font-meme text-4xl bg-black text-white p-2 rounded-lg rotate-2">PHASE 3</div>
+                    <div><h3 class="font-meme text-2xl">WORLD DOMINATION</h3><p class="font-comic">$DONALDO becomes global currency. We buy an island. Everyone gets a lambo.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-20 bg-black py-8 border-t-4 border-black text-center relative z-10">
+        <div class="overflow-hidden whitespace-nowrap mb-6">
+            <div class="inline-block animate-marquee font-meme text-3xl text-meme-yellow tracking-widest">
+                DONALDO IS KING 👑 TRUMP x RONALDO = WIN 🏆 BUY THE DIP 📉 SEND IT 📈
+            </div>
+        </div>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="https://x.com/RealDonaldoSol" target="_blank" class="sfx-hover w-16 h-16 bg-black rounded-xl border-4 border-white shadow-hard-white-sm flex items-center justify-center text-white text-3xl transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-hard-white hover:bg-white hover:text-black hover:border-black group"><svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            <a href="https://t.me/RealDonaldoSol" target="_blank" class="sfx-hover w-16 h-16 bg-[#229ED9] rounded-xl border-4 border-white shadow-hard-white-sm flex items-center justify-center text-white text-3xl transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-hard-white hover:bg-white hover:text-[#229ED9] hover:border-[#229ED9]"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+        <div class="text-white font-comic">© 2025 $DONALDO COIN. PURE MEME POWER. NO FINANCIAL ADVICE.</div>
+    </footer>
+
+    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-50 hidden w-14 h-14 bg-meme-purple text-white border-4 border-black shadow-hard rounded-full items-center justify-center text-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 sfx-hover sfx-click animate-bounce-slow">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- SOUND FX SYSTEM ---
+        const popSound = document.getElementById('pop-sound');
+        const cashSound = document.getElementById('cash-sound');
+
+        function playSound(audioElement) {
+            if (audioElement) {
+                audioElement.currentTime = 0;
+                audioElement.play().catch(e => console.log("Audio blocked"));
+            }
+        }
+
+        document.querySelectorAll('.sfx-hover').forEach(el => {
+            el.addEventListener('mouseenter', () => playSound(popSound));
+        });
+        document.querySelectorAll('.sfx-click').forEach(el => {
+            el.addEventListener('click', () => playSound(cashSound));
+        });
+
+        // --- BACK TO TOP SYSTEM ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('hidden');
+                backToTopBtn.classList.add('flex');
+            } else {
+                backToTopBtn.classList.add('hidden');
+                backToTopBtn.classList.remove('flex');
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            playSound(popSound);
+        }
+
+        // --- Existing Scripts ---
+        const container = document.getElementById('emoji-container');
+        const emojis = ['🚀', '💰', '🌕', '🇺🇸', '⚽', '💎', '🔥','TRUMP', '⚽', 'RONALDO', '🇺🇸', 'SIUUU', '🚀', 'JACKPOT'];
+        function createEmoji() {
+            const el = document.createElement('div'); el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            el.classList.add('emoji'); el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = Math.random() * 5 + 5 + 's'; el.style.fontSize = Math.random() * 2 + 1 + 'rem';
+            container.appendChild(el); setTimeout(() => { el.remove(); }, 10000);
+        }
+        setInterval(createEmoji, 400);
+
+        function copyToClipboard() {
+            const text = document.getElementById('ca-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const msg = document.getElementById('copy-msg'); msg.classList.remove('hidden');
+                setTimeout(() => { msg.classList.add('hidden'); }, 2000);
+            });
+        }
+
+        class ConfettiSystem {
+            constructor(canvasId, config) {
+                this.canvas = document.getElementById(canvasId); if (!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d'); this.config = config; this.particles = [];
+                this.resize = this.resize.bind(this); window.addEventListener('resize', this.resize);
+                this.resize(); this.init(); this.animate();
+            }
+            resize() { this.canvas.width = window.innerWidth; this.canvas.height = window.innerHeight; }
+            init() { for (let i = 0; i < this.config.particleCount; i++) this.particles.push(this.createParticle()); }
+            createParticle() {
+                return { x: Math.random() * this.canvas.width, y: Math.random() * this.canvas.height - this.canvas.height, vx: (Math.random() - 0.5) * 2, vy: Math.random() * (this.config.speed.max - this.config.speed.min) + this.config.speed.min, size: Math.random() * (this.config.size.max - this.config.size.min) + this.config.size.min, color: this.config.colors[Math.floor(Math.random() * this.config.colors.length)], rotation: Math.random() * 360, rotationSpeed: (Math.random() - 0.5) * 5, type: this.config.types[Math.floor(Math.random() * this.config.types.length)] };
+            }
+            update() { this.particles.forEach(p => { p.y += p.vy; p.x += p.vx + Math.sin(p.y * 0.01); p.rotation += p.rotationSpeed; if (p.y > this.canvas.height + 20) { p.y = -20; p.x = Math.random() * this.canvas.width; p.vx = (Math.random() - 0.5) * 2; } }); }
+            draw() { this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); this.particles.forEach(p => { this.ctx.save(); this.ctx.translate(p.x, p.y); this.ctx.rotate(p.rotation * Math.PI / 180); this.ctx.fillStyle = p.color; this.ctx.beginPath(); if (p.type === 'circle') this.ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2); else if (p.type === 'square') this.ctx.rect(-p.size / 2, -p.size / 2, p.size, p.size); else if (p.type === 'triangle') { this.ctx.moveTo(0, -p.size / 2); this.ctx.lineTo(p.size / 2, p.size / 2); this.ctx.lineTo(-p.size / 2, p.size / 2); } this.ctx.fill(); this.ctx.restore(); }); }
+            animate() { this.update(); this.draw(); requestAnimationFrame(() => this.animate()); }
+        }
+        window.addEventListener('load', () => { new ConfettiSystem('confetti-canvas', { particleCount: 150, colors: ['#FACC15', '#F97316', '#FF3333', '#A855F7', '#22d3ee', '#ffffff'], types: ['circle', 'square', 'triangle'], speed: { min: 1, max: 3 }, size: { min: 5, max: 12 } }); });
+    </script>
+</body>
+</html>
