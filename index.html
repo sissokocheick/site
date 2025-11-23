@@ -14,7 +14,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
+<script>
       tailwind.config = {
         theme: {
           extend: {
@@ -38,11 +38,18 @@
               'marquee': 'marquee 15s linear infinite',
               'wiggle': 'wiggle 0.5s ease-in-out infinite',
               'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              // NOUVELLE ANIMATION ICI 👇
+              'scroll': 'scroll 40s linear infinite', 
             },
             keyframes: {
               marquee: {
                 '0%': { transform: 'translateX(0%)' },
                 '100%': { transform: 'translateX(-100%)' },
+              },
+              // NOUVELLE KEYFRAME ICI 👇
+              scroll: {
+                  '0%': { transform: 'translateX(0)' },
+                  '100%': { transform: 'translateX(-50%)' }, /* On déplace de 50% car on duplique le contenu */
               },
               wiggle: {
                 '0%, 100%': { transform: 'rotate(-3deg)' },
@@ -110,15 +117,22 @@
 
     <nav class="sticky top-0 z-40 px-4 py-4">
         <div class="max-w-7xl mx-auto bg-meme-yellow border-4 border-black shadow-hard rounded-xl px-4 py-2 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-            <div class="flex items-center gap-3 sfx-hover">
-                <div class="transform hover:scale-105 transition-transform">
-                    <img src="images/logo.ico" alt="Donaldo" class="h-16 md:h-20 border-2 border-black rounded bg-white">
-                </div>
-                <div class="hidden md:flex flex-col leading-none">
-                    <span class="font-meme text-2xl text-black">OFFICIAL</span>
-                    <span class="font-comic text-sm bg-black text-white px-2 py-0.5 rounded transform -rotate-2">SOLANA MEME</span>
-                </div>
-            </div>
+            
+           <div class="flex items-center gap-3 sfx-hover group cursor-pointer">
+    <div class="transform group-hover:scale-105 transition-transform">
+        <img src="images/logo.ico" alt="Donaldo" class="h-16 md:h-20 border-4 border-black rounded-lg bg-white shadow-lg">
+    </div>
+    
+    <div class="hidden md:flex flex-col items-start">
+        <span class="font-black text-2xl bg-red-600 text-white px-3 py-1 transform -skew-x-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            THE ART
+        </span>
+        <span class="font-black text-xl text-black mt-1 px-1">
+            OF THE GOAL
+        </span>
+    </div>
+</div>
+            
             <div class="flex items-center gap-3 md:gap-6">
                 <a href="#how-to-buy" class="sfx-hover font-meme text-lg md:text-xl px-4 py-1 bg-white border-2 border-black rounded-lg shadow-hard-sm hover:shadow-hard hover:-translate-y-1 hover:bg-meme-purple hover:text-white hover:rotate-2 transition-all">HOW TO BUY 🛒</a>
                 <a href="#golden-ticket" class="sfx-hover font-meme text-lg md:text-xl px-4 py-1 bg-white border-2 border-black rounded-lg shadow-hard-sm hover:shadow-hard hover:-translate-y-1 hover:bg-meme-red hover:text-white hover:-rotate-2 transition-all">CA 🎫</a>
@@ -228,6 +242,84 @@
             </div>
         </section>
     </main>
+
+<section class="w-full mb-24 overflow-hidden relative">
+             <h2 class="font-meme text-5xl text-white text-center mb-12 drop-shadow-[4px_4px_0px_#000] transform rotate-1 relative z-10">
+                📸 THE MEME MACHINE
+            </h2>
+            
+            <div class="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-meme-yellow to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-meme-yellow to-transparent z-10 pointer-events-none"></div>
+
+            <div class="flex animate-scroll hover:[animation-play-state:paused]" style="width: max-content;">
+                
+                <div class="flex gap-6 px-3">
+                    <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme1.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                    <div class="w-80 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme2.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                    <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme3.png" alt="Meme" class="w-full h-64 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-72 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme4.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme5.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme6.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme7.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme8.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme9.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                </div>
+
+                <div class="flex gap-6 px-3">
+                  <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme1.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                    <div class="w-80 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme2.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                    <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme3.png" alt="Meme" class="w-full h-64 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-72 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme4.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme5.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme6.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme7.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme8.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                     <div class="w-64 sfx-hover group bg-white p-2 border-4 border-black shadow-hard rounded-xl transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
+                        <img src="images/meme9.png" alt="Meme" class="w-full h-48 object-cover rounded-lg border-2 border-black">
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="text-center mt-8 font-meme text-xl text-black relative z-10">
+                (Hover to pause) MAKE MEMES, GET RICH. TAG @RealDonaldoSol
+            </p>
+        </section>
+        </section>
 
     <footer class="mt-20 bg-black py-8 border-t-4 border-black text-center relative z-10">
         <div class="overflow-hidden whitespace-nowrap mb-6">
